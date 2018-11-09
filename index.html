@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>数字滚动动画效果</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="container" class="clearfix"></div>
+  <div id="container1" class="clearfix"></div>
+
+  <script src="./index.js"></script>
+  <script>
+    window.onload = function() {
+      const test1 = numberAnimation.init({
+        el: '#container',
+        number: 0,
+        length: 5,
+        speed: 1000,
+        style: {
+          width: 60,
+          height: 80,
+          fontSize: 40
+        }
+      })
+
+      const test2 = numberAnimation.init({
+        el: '#container1',
+        number: 0,
+        length: 7,
+        speed: 2000,
+        style: {
+          width: 100,
+          height: 120,
+          fontSize: 60
+        }
+      })
+
+      console.log(test1, test2)
+      
+      var number1 = 31123
+      setInterval(function() {
+        number1 += 53234
+        test1.setNumber(number1)
+      }, 3000)
+
+      var number2 = 89123
+      setInterval(function() {
+        number2 += 13234
+        test2.setNumber(number2)
+      }, 3000)
+    }
+  </script>
+</body>
+</html>
