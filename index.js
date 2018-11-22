@@ -73,8 +73,8 @@ Animation.prototype = {
     const numberArr = numberStr.split('')
     const numberWrapArr = this.element.querySelectorAll('.number-wrap')
     numberWrapArr.forEach(function(value, i) {
-      numberWrapArr[i].style.webkitTransform = 'translateY(-' + numberHeight * parseInt(numberArr[i]) + 'px)'
-      numberWrapArr[i].style.webkitTransition = speed / 1000 + 's'
+      value.style.webkitTransform = 'translateY(-' + numberHeight * parseInt(numberArr[i]) + 'px)'
+      value.style.webkitTransition = speed / 1000 + 's'
     }) 
   },
 
