@@ -1,75 +1,70 @@
 
-const numberAnimation = {
+function Animation(options) {
+  this.element = options.el
+  this.number = options.number || 0
+  this.speed = options.speed || 2000
+  this.length = Math.max(options.length || 0, this.number.toString().length)
+  this.style = options.style || { width: '30px', height: '50px', fontSize: '20px' }
+}
 
-  element: null,
-  speed: 2000,
-  length: 0,
-  style: {
-    width: 100,
-    height: 150,
-    fontSize: 60
-  },
-
-  init: function(options) {
-    this.element = document.querySelector(options.el)
-    this.speed = options.speed || this.speed
-    this.length = Math.max(options.length || 0, options.number.toString().length)
-    this.style = options.style || this.style
-
+Animation.prototype = {
+  constructor: Animation,
+  init: function() {
+    if (!this.element) {
+      alert('必须指定一个容器')
+      return false
+    }
     this.prepare()
     this.setStyle()
-    this.setNumber(options.number)
-    return this
+    this.setNumber(this.number)
   },
 
   prepare: function() {
     const length = this.length
-    const numberDiv = '<div class="number-box">' +
-                        '<div class="number-wrap">' + 
-                          '<span class="number-span">0</span>' + 
-                          '<span class="number-span">1</span>' + 
-                          '<span class="number-span">2</span>' + 
-                          '<span class="number-span">3</span>' + 
-                          '<span class="number-span">4</span>' + 
-                          '<span class="number-span">5</span>' + 
-                          '<span class="number-span">6</span>' + 
-                          '<span class="number-span">7</span>' + 
-                          '<span class="number-span">8</span>' + 
-                          '<span class="number-span">9</span>' + 
-                          '<span class="number-span">.</span>' + 
+    const numberDiv = '<div class="number-box" style="float:left; overflow:hidden; text-align:center;">' +
+                        '<div class="number-wrap" style="float:left; width:100%;">' + 
+                          '<p style="margin:0;">0</p>' + 
+                          '<p style="margin:0;">1</p>' + 
+                          '<p style="margin:0;">2</p>' + 
+                          '<p style="margin:0;">3</p>' + 
+                          '<p style="margin:0;">4</p>' + 
+                          '<p style="margin:0;">5</p>' + 
+                          '<p style="margin:0;">6</p>' + 
+                          '<p style="margin:0;">7</p>' + 
+                          '<p style="margin:0;">8</p>' + 
+                          '<p style="margin:0;">9</p>' + 
+                          '<p style="margin:0;">.</p>' + 
                         '</div>' +
                       '</div>'
     let htmlStr = ''
     for (let i = 0; i < length; i++) {
       htmlStr += numberDiv
     }
+    htmlStr += '<div style="clear:both"></div>'
     this.element.innerHTML = htmlStr
   },
 
   setStyle: function() {
     const style = this.style
     const numberBoxArr = this.element.querySelectorAll('.number-box')
-    const numberSpanArr = this.element.querySelectorAll('.number-span')
 
-    numberBoxArr.forEach(function(item, i) {
-      item.style.width = style.width + 'px'
-      item.style.height = style.height + 'px'
-      item.style.lineHeight = style.height + 'px'
-      item.style.fontSize = style.fontSize + 'px'
-    })
-
-    numberSpanArr.forEach(function(item, i) {
-      item.style.width = style.width + 'px'
-      item.style.height = style.height + 'px'
-      item.style.fontSize = style.fontSize + 'px'
+    numberBoxArr.forEach(function(item) {
+      for (let key in style) {
+        item.style[key] = style[key]
+        if (key == 'height') {
+          item.style.lineHeight = style[key]
+        }
+      }
     })
   },
 
   setNumber: function(number) {
-    const numberHeight = this.style.height
+    if (!this.element) {
+      return false
+    }
+    const numberHeight = parseInt(this.style.height)
     const speed = this.speed
     const numberStr = this.numberPadding(number, this.length).toString()
-    console.log(numberStr, this.length)
     if (numberStr.length > this.length) {
       this.length = numberStr.length
       this.prepare()
