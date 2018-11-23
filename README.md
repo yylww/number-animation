@@ -1,14 +1,14 @@
-# number-animation
+# umber-animation
 数字改变时动画效果
 
-## HTML
+### HTML
 ```html
 <body>
   <div id='box'></div>
 </body>
 ```
 
-## JavaScript
+### JavaScript
 ```javascript
 const a = new Animation({
   el: document.getElementById('box'), // required
