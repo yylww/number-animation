@@ -1,6 +1,8 @@
 # number-animation
 数字改变时动画效果
 
+### [Demo]('https://yylww.github.io/demo/number-animation/')
+
 ### HTML
 ```html
 <body>
