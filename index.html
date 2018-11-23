@@ -7,18 +7,18 @@
   <title>数字滚动动画效果</title>
 </head>
 <body>
-  <div id="container"></div>
-  <div id="container1"></div>
+  <div id="box_1"></div>
+  <div id="box_2"></div>
 
   <script src="./index.js"></script>
   <script>
     window.onload = function() {
-      var a = new Animation({
-        el: document.getElementById('container'),
+      const a = new Animation({
+        el: document.getElementById('box_1'),
       })
-      var b = new Animation({
-        el: document.getElementById('container1'),
-        number: 12000,
+      const b = new Animation({
+        el: document.getElementById('box_2'),
+        number: 2000,
         speed: 3000,
         length: 8,
         style: {
@@ -34,13 +34,13 @@
       a.init()
       b.init()
 
-      var n = 1234
+      let n = 1234
       setInterval(() => {
         n += 1357
         a.setNumber(n)
       }, 3000)
 
-      var m = 2123
+      let m = 2123
       setInterval(() => {
         m += 2345
         b.setNumber(m)
