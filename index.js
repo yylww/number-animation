@@ -2,7 +2,7 @@
 function Animation(options) {
   this.element = options.el
   this.number = options.number || 0
-  this.speed = options.speed || 2000
+  this.speed = options.speed || 1000
   this.length = Math.max(options.length || 0, this.number.toString().length)
   this.style = options.style || { width: '30px', height: '50px', fontSize: '20px' }
 }

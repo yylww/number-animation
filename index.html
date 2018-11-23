@@ -19,8 +19,8 @@
       const b = new Animation({
         el: document.getElementById('box_2'),
         number: 2000,
-        speed: 3000,
-        length: 8,
+        speed: 2000,
+        length: 6,
         style: {
           width: '60px',
           height: '90px',
@@ -35,16 +35,13 @@
       b.init()
 
       let n = 1234
+      let m = 4321
       setInterval(() => {
         n += 1357
+        m += 2468
         a.setNumber(n)
-      }, 3000)
-
-      let m = 2123
-      setInterval(() => {
-        m += 2345
         b.setNumber(m)
-      }, 5000)
+      }, 4000)
     }
   </script>
 </body>

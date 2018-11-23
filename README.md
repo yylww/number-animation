@@ -13,7 +13,7 @@
 const a = new Animation({
   el: document.getElementById('box'), // required
   number: 2000,                       // optional, Initail value, default: 0
-  speed: 3000,                        // optional, Animation speed(ms), default: 2000
+  speed: 3000,                        // optional, Animation speed(ms), default: 1000
   length: 6,                          // optional, default: 0 (Minimun is the length of the number)
   style: {                            // optional, number style 
     width: '60px',
